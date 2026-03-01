@@ -1,0 +1,46 @@
+{
+  "spec": "HBCE-AI-CAPSULE-EVENT-0001",
+  "event_id": 1,
+  "ts": "2026-02-28T12:10:00+01:00",
+  "ipr_ai": "IPR-AI-0001",
+  "ipr_operator": "IPR-3",
+
+  "provider": {
+    "name": "xai",
+    "model_id": "grok-2",
+    "request_id": null,
+    "params": {
+      "temperature": 0,
+      "max_tokens": 512
+    }
+  },
+
+  "policy": {
+    "policy_pack_id": "UE-ΦΩ-001",
+    "mode": "FAIL_CLOSED",
+    "notes": ["GDPR_MIN", "HASH_ONLY", "APPEND_ONLY"]
+  },
+
+  "input": {
+    "canonical": "Example Grok input (canonical).",
+    "sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+  },
+
+  "output": {
+    "canonical": "Example Grok output (canonical).",
+    "sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+  },
+
+  "chain": {
+    "prev": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "entry": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "algo": "sha256(prev|input_sha256|output_sha256|policy_pack_id|ts|ipr_ai|ipr_operator)"
+  },
+
+  "sign": {
+    "alg": "ED25519",
+    "key_id": "JOKER-C2-RUNTIME-001",
+    "pub_ref": "keys/joker-c2.pub.json",
+    "sig": "BASE64_SIGNATURE_PLACEHOLDER"
+  }
+}
