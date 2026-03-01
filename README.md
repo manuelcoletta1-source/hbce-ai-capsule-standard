@@ -20,9 +20,9 @@ The capsule does **not** claim to “encapsulate a model’s weights” when the
 - `schemas/*.schema.json` — JSON Schemas
 - `keys/` — public key references (Ed25519)
 - `tools/` — minimal signing helpers
-- `examples/openai_event.json` — example capsule event (OpenAI)
-- `examples/anthropic_event.json` — example capsule event (Anthropic)
-- `examples/xai_grok_event.json` — example capsule event (xAI Grok)
+- `examples/openai_event.json` — example capsule event for OpenAI
+- `examples/anthropic_event.json` — example capsule event for Anthropic
+- `examples/xai_grok_event.json` — example capsule event for xAI Grok
 
 ## Verification Rule (normative)
 `chain.entry = sha256(prev|input_sha256|output_sha256|policy_pack_id|ts|ipr_ai|ipr_operator)`
