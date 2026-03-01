@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "HBCE-AI-CAPSULE-EVENT-SCHEMA-v1",
+  "title": "HBCE AI Capsule Event",
+  "type": "object",
+  "required": ["spec","event_id","ts","ipr_ai","ipr_operator","provider","policy","input","output","chain","sign"],
+  "properties": {
+    "spec": { "type": "string" },
+    "event_id": { "type": "integer", "minimum": 0 },
+    "ts": { "type": "string" },
+    "ipr_ai": { "type": "string" },
+    "ipr_operator": { "type": "string" },
+
+    "provider": {
+      "type": "object",
+      "required": ["name","model_id"],
+      "properties": {
+        "name": { "type": "string" },
+        "model_id": { "type": "string" },
+        "request_id": { "type": ["string","null"] },
+        "params": { "type": ["object","null"] }
+      },
+      "additionalProperties": true
+    },
+
+    "policy": {
+      "type": "object",
+      "required": ["policy_pack_id","mode"],
+      "properties": {
+        "policy_pack_id": { "type": "string" },
+        "mode": { "type": "string" },
+        "notes": { "type": ["array","null"], "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+
+    "input": {
+      "type": "object",
+      "required": ["canonical","sha256"],
+      "properties": {
+        "canonical": { "type": "string" },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      },
+      "additionalProperties": false
+    },
+
+    "output": {
+      "type": "object",
+      "required": ["canonical","sha256"],
+      "properties": {
+        "canonical": { "type": "string" },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      },
+      "additionalProperties": false
+    },
+
+    "chain": {
+      "type": "object",
+      "required": ["prev","entry","algo"],
+      "properties": {
+        "prev": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "entry": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "algo": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+
+    "sign": {
+      "type": "object",
+      "required": ["alg","key_id","pub_ref","sig"],
+      "properties": {
+        "alg": { "type": "string", "enum": ["ED25519"] },
+        "key_id": { "type": "string" },
+        "pub_ref": { "type": "string" },
+        "sig": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
